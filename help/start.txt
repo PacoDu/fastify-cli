@@ -20,6 +20,10 @@ Usage: fastify start [opts] <file>
   [env: FASTIFY_PRETTY_LOGS]
       Prints pretty logs
 
+  -R, --print-routes
+  [env: FASTIFY_PRINT_ROUTES]
+      Prints routes
+
   -o, --options
   [env: FASTIFY_OPTIONS]
       Use custom options

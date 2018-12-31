@@ -128,7 +128,13 @@ function runFastify (args, cb) {
     fastify._routePrefix = opts.prefix || ''
   }
 
-  fastify.register(fp(file), pluginOptions)
+  fastify.register(fp(file), pluginOptions).after(err => {
+    if (err) throw err
+
+    if (opts.printRoutes) {
+      fastify.log.info(fastify.printRoutes())
+    }
+  })
 
   if (opts.address) {
     fastify.listen(opts.port, opts.address, wrap)
