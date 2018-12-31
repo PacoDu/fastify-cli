@@ -132,7 +132,8 @@ function runFastify (args, cb) {
     if (err) throw err
 
     if (opts.printRoutes) {
-      fastify.log.info(fastify.printRoutes())
+      const routes = fastify.printRoutes()
+      fastify.log.info(`Routes:\n${routes}`)
     }
   })
 

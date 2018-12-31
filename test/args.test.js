@@ -11,6 +11,7 @@ test('should parse args correctly', t => {
     '--socket', 'fastify.io.socket:9999',
     '--log-level', 'info',
     '--pretty-logs', 'true',
+    '--print-routes', 'true',
     '--watch', 'true',
     '--ignore-watch', 'ignoreme.js',
     '--options', 'true',
@@ -24,6 +25,7 @@ test('should parse args correctly', t => {
   t.strictDeepEqual(parsedArgs, {
     _: ['app.js'],
     prettyLogs: true,
+    printRoutes: true,
     options: true,
     watch: true,
     ignoreWatch: 'ignoreme.js',
@@ -46,6 +48,7 @@ test('should parse args with = assignment correctly', t => {
     '--socket=fastify.io.socket:9999',
     '--log-level=info',
     '--pretty-logs=true',
+    '--print-routes=true',
     '--watch=true',
     '--ignore-watch=ignoreme.js',
     '--options=true',
@@ -59,6 +62,7 @@ test('should parse args with = assignment correctly', t => {
   t.strictDeepEqual(parsedArgs, {
     _: ['app.js'],
     prettyLogs: true,
+    printRoutes: true,
     options: true,
     watch: true,
     ignoreWatch: 'ignoreme.js',
@@ -80,6 +84,7 @@ test('should parse env vars correctly', t => {
   process.env.FASTIFY_SOCKET = 'fastify.io.socket:9999'
   process.env.FASTIFY_LOG_LEVEL = 'info'
   process.env.FASTIFY_PRETTY_LOGS = 'true'
+  process.env.FASTIFY_PRINT_ROUTES = 'true'
   process.env.FASTIFY_WATCH = 'true'
   process.env.FASTIFY_IGNORE_WATCH = 'ignoreme.js'
   process.env.FASTIFY_OPTIONS = 'true'
@@ -93,6 +98,7 @@ test('should parse env vars correctly', t => {
     delete process.env.FASTIFY_SOCKET
     delete process.env.FASTIFY_LOG_LEVEL
     delete process.env.FASTIFY_PRETTY_LOGS
+    delete process.env.FASTIFY_PRINT_ROUTES
     delete process.env.FASTIFY_WATCH
     delete process.env.FASTIFY_IGNORE_WATCH
     delete process.env.FASTIFY_OPTIONS
@@ -106,6 +112,7 @@ test('should parse env vars correctly', t => {
   t.strictDeepEqual(parsedArgs, {
     _: [],
     prettyLogs: true,
+    printRoutes: true,
     options: true,
     watch: true,
     ignoreWatch: 'ignoreme.js',
